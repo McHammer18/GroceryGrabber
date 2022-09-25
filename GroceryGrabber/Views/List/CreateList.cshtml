@@ -1,0 +1,20 @@
+﻿@{
+}
+
+<div>
+    <h1>This page will populate grocery items to select and add to a list</h1>
+
+    <form>
+        <div class="form-group">
+            <label for="ListName">List Name</label>
+            <input type="text" class="form-control" id="ListName" placeholder="Enter List Name">
+        </div>
+        <div class="form-group">
+            <select>
+                <option value="">Select One</option>
+                @*Grocerys will be populated here*@
+            </select>
+        </div>
+        <button asp-controller="List" asp-action="" type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>

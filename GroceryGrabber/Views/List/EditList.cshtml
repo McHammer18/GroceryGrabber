@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div>
+    <h2 class="text-center">Select a list to edit</h2>
+    <table class="table table-bordered">
+        <tbody>
+            @*Loop that will take DB items and put them in a table with a checkbox, when db is ready you can inject that data*@
+            @for (int i = 0; i < ViewBag.length; i++)
+            {
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>@ViewBag.listName[i]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-primary" asp-controller="List" asp-action="">Confirm</a>
+</div>
