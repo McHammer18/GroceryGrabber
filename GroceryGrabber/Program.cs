@@ -8,6 +8,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<GroceryContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("GroceryContext")));
 
+builder.Services.AddDbContext<UserContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UserContext")));
 
 var app = builder.Build();
 
