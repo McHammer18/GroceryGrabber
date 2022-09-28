@@ -5,6 +5,7 @@ namespace GroceryGrabber.Models
 {
     public class UserModel
     {
+        [Key]
         public int UserId { get; set; }
 
         [Required(ErrorMessage ="Please enter a user name that is atleast 4 Charaters long and no more than 8")]
