@@ -1,13 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GroceryGrabber.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace GroceryGrabber.Controllers
 {
+
+
     public class HomeController : Controller
     {
+        private GroceryContext context { get; set; }
+        public HomeController(GroceryContext ctx)
+        {
+            context = ctx;
+        }
+
         public IActionResult Index()
         {
-            return View("~/Views/Authentication/Login.cshtml");
+            var groceries = context.GroceryItems.OrderBy(x => x.Name).ToList();
+            return View(groceries);
         }
 
         public IActionResult Register()
@@ -15,26 +25,11 @@ namespace GroceryGrabber.Controllers
             return View("~/Views/Authentication/Register.cshtml");
         }
 
-        public IActionResult DashBoard()
-        {
-            // Dummy Data I used setting things up. once we have a DB going can deletet this
-            ViewBag.listId = new List<int>() { 1, 2, 3, 4 };
-            ViewBag.listName = new List<string>() { "ListOne", "ListTwo", "ListThree", "ListFour" };
-            ViewBag.numberOfItems = new List<int> { 16, 32, 70, 43 };
-            ViewBag.length = ViewBag.listName.Count;
-
-            return View("Index");
-        }
-
         public IActionResult Create()
         {
             return View("~/Views/List/CreateList.cshtml");
         }
 
-        public IActionResult Admin()
-        {
-            return View("~/Views/Admin.cshtml");
-        }
 
         public IActionResult Logout()
         {
