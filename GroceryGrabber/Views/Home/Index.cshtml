@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<GroceryItem>
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -15,17 +16,15 @@
         </thead>
         <tbody>
             @*Loop that will take DB items and put them in a table, when db is ready you can inject that data*@
-            @for (int i = 0; i < ViewBag.length; i++)
+            @foreach(var item in Model)
             {
                 <tr>
-                    <th scope="row">@ViewBag.listId[i]</th>
-                    <td>@ViewBag.listName[i]</td>
-                    <td>@ViewBag.numberOfItems[i]</td>
-                    <td>
-                        <a class="btn btn-success" asp-controller="List" asp-action="Open">Open</a>
-                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Location</td>
+                    <td>@item.Department</td>
+                    <td>@item.Price</td>
                 </tr>
-
             }
         </tbody>
     </table>

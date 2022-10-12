@@ -1,0 +1,33 @@
+﻿@model GroceryItem;
+@{
+}
+
+<div>
+    <form asp-action="EditGroceryItem" method="post">
+        <div asp-validation-summary-all class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name">Item Name</label>
+            <input asp-for="Name" class="form=control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Description</label>
+            <input asp-for="Description" class="form=control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Location">Location</label>
+            <input asp-for="Location" class="form=control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Department">Department</label>
+            <input asp-for="Department" class="form=control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Price">Price</label>
+            <input asp-for="Price" class="form=control" />
+        </div>
+        <input type="hidden" asp-for="GroceryId" />
+
+        <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+        <button type="reset" class="btn btn-danger">Clear</button>
+    </form>
+</div>

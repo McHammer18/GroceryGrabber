@@ -1,0 +1,13 @@
+﻿@model GroceryItem;
+@{
+    ViewBag.Title = "Delete Movie";
+}
+
+<h2>Confirm Deletion</h2>
+
+<form asp-action="DeleteGroceryItem" method="post">
+    <input type="hidden" asp-for="GroceryId" />
+
+    <button type="submit" class="btn-primary btn">Delete</button>
+    <a asp-controller="Admin" asp-action="Admin" class="btn btn-primary">Home</a>
+</form>
