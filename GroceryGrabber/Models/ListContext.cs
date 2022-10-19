@@ -18,8 +18,16 @@ namespace GroceryGrabber.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<Lists>().HasData();
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Lists>().HasData(
+                new Lists
+                {
+                    ListId = 1,
+                    UserID = 1,
+                    Name = "List1",
+                    Items = new List<GroceryItem>()
+                }
+                );
         }
     }
 }

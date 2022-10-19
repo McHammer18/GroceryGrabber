@@ -8,6 +8,6 @@ namespace GroceryGrabber.Models
             : base(options)
         { }
 
-        public DbSet<UsersLists> usersLists { get; set; } 
+        public DbSet<ListsViewModel> usersLists { get; set; } 
     }
 }

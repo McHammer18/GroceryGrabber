@@ -2,11 +2,10 @@
 
 namespace GroceryGrabber.Models
 {
-    public class UsersLists
+    public class ListsViewModel
     {
+       public List<Lists> List { get; set; }
        public int UserID { get; set; }
        public int ListId { get; set; }
-       public Lists List { get; set; } 
-
     }
 }

@@ -13,7 +13,7 @@ namespace GroceryGrabber.Models
         public int UserID { get; set; }
         [StringLength(20)]
         public string Name { get; set; }
-        public virtual ICollection<GroceryItem> Items { get; set; }
+        public List<GroceryItem> Items { get; set; }
 
     }
 }
