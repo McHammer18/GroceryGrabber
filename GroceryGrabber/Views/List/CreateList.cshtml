@@ -1,5 +1,4 @@
-﻿@{
-}
+﻿@model List<GroceryItem>
 
 <div>
     <h1>This page will populate grocery items to select and add to a list</h1>
@@ -10,77 +9,148 @@
             <input type="text" class="form-control" id="ListName" placeholder="Enter List Name">
         </div>
         <div class="form-group">
+            <label>Item 1:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 2:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach (var itm in Model)
+                {
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 3:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach (var itm in Model)
+                {
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 4:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 5:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 6:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach (var itm in Model)
+                {
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 7:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 8:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 9:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 10:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 11:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 12:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 13:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 14:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 15:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 16:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 17:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
+            <label>Item 18:</label>
             <select>
                 <option value="">Select One</option>
-                @*Grocerys will be populated here*@
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
+            </select>
+            <label>Item 19:</label>
+            <select>
+                <option value="">Select One</option>
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
+            </select>
+            <label>Item 20:</label>
+            <select>
+                <option value="">Select One</option>
+                @foreach ( var itm in Model){
+                    <option value="@itm.GroceryId">@itm.Name</option>
+                }
             </select>
         </div>
         <button asp-controller="List" asp-action="" type="submit" class="btn btn-primary">Create</button>

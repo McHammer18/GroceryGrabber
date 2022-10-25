@@ -1,9 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GroceryGrabber.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GroceryGrabber.Controllers
 {
     public class ListController : Controller
     {
+        private GroceryContext context { get; set; }
+        public ListController(GroceryContext ctx)
+        {
+            context = ctx;
+        }
         public IActionResult Delete()
         {
             // Dummy Data I used setting things up. once we have a DB going can deletet this
@@ -26,8 +33,28 @@ namespace GroceryGrabber.Controllers
 
         public IActionResult Open()
         {
-            return View("~/Views/List/ViewGroceryList.cshtml");
+            //This is grabbing the person's list
+            var itm = context.GroceryList
+                .Include(gl => gl.User)
+                .Include(gl => gl.Item)
+                .ToList();
+            return View("~/Views/List/ViewGroceryList.cshtml", itm);
         }
-        
+
+        // OR Attribute that catches /create/ and rename method to CreateList
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var itm = context.GroceryItems.ToList();
+            return View("CreateList", itm);
+        }
+
+        [HttpPost]
+        public IActionResult Create(UsersLists lists)
+        {
+            //Logic for saving the new list to the database
+            return View();
+        }
+
     }
 }

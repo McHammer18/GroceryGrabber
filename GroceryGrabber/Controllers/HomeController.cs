@@ -25,11 +25,6 @@ namespace GroceryGrabber.Controllers
             return View("~/Views/Authentication/Register.cshtml");
         }
 
-        public IActionResult Create()
-        {
-            return View("~/Views/List/CreateList.cshtml");
-        }
-
 
         public IActionResult Logout()
         {
