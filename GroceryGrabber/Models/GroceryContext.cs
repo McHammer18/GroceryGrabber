@@ -8,7 +8,9 @@ namespace GroceryGrabber.Models
             : base(options)
         { }
 
+        public DbSet<UserModel> Users { get; set; }
         public DbSet<GroceryItem> GroceryItems { get; set; }
+        public DbSet<UsersLists> GroceryList { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
@@ -18,6 +20,31 @@ namespace GroceryGrabber.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<UserModel>().HasData(
+                new UserModel
+                {
+                    UserId = 1,
+                    UserName = "MorganC",
+                    Name = "Morgan",
+                    Password = "P@ssw0rd1"
+                },
+                new UserModel
+                {
+                    UserId = 2,
+                    UserName = "LadyLuck",
+                    Name = "Taylor",
+                    Password = "P@ssw0rd1"
+                },
+                new UserModel
+                {
+                    UserId = 3,
+                    UserName = "DeonD",
+                    Name = "Deaon",
+                    Password = "P@ssw0rd1"
+                }
+            );
+
             modelBuilder.Entity<GroceryItem>().HasData(
                 new GroceryItem
                 {
@@ -60,6 +87,15 @@ namespace GroceryGrabber.Models
                     Location = "Aisle 20"
                 }
              );
+
+            modelBuilder.Entity<UsersLists>().HasData(
+                new UsersLists
+                {
+                    id = 1,
+                    UserID = 1,
+                    GroceryId = 1
+                });
+
         }
 
     }
