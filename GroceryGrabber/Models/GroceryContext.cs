@@ -77,10 +77,11 @@ namespace GroceryGrabber.Models
 
 
         public static async Task CreateAdminUser(IServiceProvider serviceProvider)
-        
+        {
+            using (var scoped = serviceProvider.CreateScope())
             {
-                UserManager<UserModel> userManager = serviceProvider.GetRequiredService<UserManager<UserModel>>();
-                RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                UserManager<UserModel> userManager = scoped.ServiceProvider.GetRequiredService<UserManager<UserModel>>();
+                RoleManager<IdentityRole> roleManager = scoped.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
                 string username = "admin";
                 string pwd = "admin";
@@ -101,7 +102,7 @@ namespace GroceryGrabber.Models
                     }
                 }
             }
-        
+        }
 
     }
 }
