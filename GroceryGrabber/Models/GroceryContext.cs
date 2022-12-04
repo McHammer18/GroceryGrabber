@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace GroceryGrabber.Models
 {
@@ -20,30 +21,6 @@ namespace GroceryGrabber.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<UserModel>().HasData(
-                new UserModel
-                {
-                    UserId = 1,
-                    UserName = "MorganC",
-                    Name = "Morgan",
-                    Password = "P@ssw0rd1"
-                },
-                new UserModel
-                {
-                    UserId = 2,
-                    UserName = "LadyLuck",
-                    Name = "Taylor",
-                    Password = "P@ssw0rd1"
-                },
-                new UserModel
-                {
-                    UserId = 3,
-                    UserName = "DeonD",
-                    Name = "Deaon",
-                    Password = "P@ssw0rd1"
-                }
-            );
 
             modelBuilder.Entity<GroceryItem>().HasData(
                 new GroceryItem
@@ -88,14 +65,43 @@ namespace GroceryGrabber.Models
                 }
              );
 
-            modelBuilder.Entity<UsersLists>().HasData(
-                new UsersLists
-                {
-                    id = 1,
-                    UserID = 1,
-                    GroceryId = 1
-                });
+            //modelBuilder.Entity<UsersLists>().HasData(
+               // new UsersLists
+               // {
+               //     id = 1,
+              //      UserID = 1,
+               //     GroceryId = 1
+             //   });
 
+        }
+
+
+        public static async Task CreateAdminUser(IServiceProvider serviceProvider)
+        {
+            using (var scoped = serviceProvider.CreateScope())
+            {
+                UserManager<UserModel> userManager = scoped.ServiceProvider.GetRequiredService<UserManager<UserModel>>();
+                RoleManager<IdentityRole> roleManager = scoped.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                string username = "admin";
+                string pwd = "admin";
+                string roleName = "Admin";
+
+                if (await roleManager.FindByNameAsync(roleName) == null)
+                {
+                    await roleManager.CreateAsync(new IdentityRole(roleName));
+                }
+
+                if (await userManager.FindByNameAsync(username) == null)
+                {
+                    UserModel user = new UserModel() { UserName = username };
+                    var result = await userManager.CreateAsync(user, pwd);
+                    if (result.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(user, roleName);
+                    }
+                }
+            }
         }
 
     }

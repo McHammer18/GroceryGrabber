@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using GroceryGrabber.Models;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,16 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<GroceryContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("GroceryContext")));
+
+
+builder.Services.AddIdentity<UserModel, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;//not requiring the special character.
+    options.Password.RequireDigit = false;//not requiring numbers.
+})
+        .AddEntityFrameworkStores<GroceryContext>()
+        .AddDefaultTokenProviders();
 
 var app = builder.Build();
 
@@ -24,9 +36,12 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 app.Run();
