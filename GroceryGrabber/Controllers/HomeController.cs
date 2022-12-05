@@ -19,16 +19,5 @@ namespace GroceryGrabber.Controllers
             var groceries = context.GroceryItems.OrderBy(x => x.Name).ToList();
             return View(groceries);
         }
-
-        public IActionResult Register()
-        {
-            return View("~/Views/Authentication/Register.cshtml");
-        }
-
-
-        public IActionResult Logout()
-        {
-            return View("~/Views/Authentication/Login.cshtml");
-        }
     }
 }

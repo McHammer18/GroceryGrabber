@@ -23,7 +23,7 @@ namespace GroceryGrabber.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Evan()
+        public IActionResult Anonym()
         {
             return View();
         }
