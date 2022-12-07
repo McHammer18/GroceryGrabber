@@ -12,14 +12,7 @@ namespace GroceryGrabber.Models
 
 		[Required(ErrorMessage = "Please enter a first name.")]
 		[StringLength(25)]
-		public string Firstname { get; set; }
-
-		[Required(ErrorMessage = "Please enter a last name.")]
-		[StringLength(25)]
-		public string Lastname { get; set; }
-
-		[NotMapped]
-        public string Name { get { return Firstname + " " + Lastname; } }
+		public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter an email address.")]
 		[DataType(DataType.EmailAddress)]

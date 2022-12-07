@@ -42,6 +42,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
+GroceryContext.CreateAdminUser(app.Services);
 
 app.Run();
