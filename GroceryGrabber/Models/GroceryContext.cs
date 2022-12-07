@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GroceryGrabber.Models
 {
-    public class GroceryContext : DbContext
+    public class GroceryContext : IdentityDbContext
     {
         public GroceryContext(DbContextOptions<GroceryContext> options)
             : base(options)
