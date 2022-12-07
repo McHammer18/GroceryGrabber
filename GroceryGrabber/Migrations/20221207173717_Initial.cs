@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GroceryGrabber.Migrations
 {
-    public partial class InitailAdmin : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,6 +64,21 @@ namespace GroceryGrabber.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_GroceryItems", x => x.GroceryId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "groceryViewModels",
+                columns: table => new
+                {
+                    GroceryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    item1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    item2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    item3 = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_groceryViewModels", x => x.GroceryID);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,6 +193,7 @@ namespace GroceryGrabber.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    GroceryID = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ItemGroceryId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -277,6 +293,9 @@ namespace GroceryGrabber.Migrations
 
             migrationBuilder.DropTable(
                 name: "GroceryList");
+
+            migrationBuilder.DropTable(
+                name: "groceryViewModels");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
