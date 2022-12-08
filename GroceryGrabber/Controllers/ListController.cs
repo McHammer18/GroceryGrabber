@@ -14,24 +14,20 @@ namespace GroceryGrabber.Controllers
             context = ctx;
             userManager = userMgr;
         }
-        public IActionResult Delete()
+        [HttpGet]
+        public IActionResult Delete(int id)
         {
-            // Dummy Data I used setting things up. once we have a DB going can deletet this
-            ViewBag.listId = new List<int>() { 1, 2, 3, 4 };
-            ViewBag.listName = new List<string>() { "ListOne", "ListTwo", "ListThree", "ListFour" };
-            ViewBag.numberOfItems = new List<int> { 16, 32, 70, 43 };
-            ViewBag.length = ViewBag.listName.Count;
-            return View("DeleteList");
+            var list = context.GroceryViewModel.Find(id);
+            ViewBag.GroceriesList = context.GroceryViewModel.OrderBy(x => x.GroceryName).ToList();
+            return View("DeleteList", list);
         }
 
-        public IActionResult Edit()
+        [HttpPost]
+        public IActionResult Delete(GroceryViewModel model)
         {
-            // Dummy Data I used setting things up. once we have a DB going can deletet this
-            ViewBag.listId = new List<int>() { 1, 2, 3, 4 };
-            ViewBag.listName = new List<string>() { "ListOne", "ListTwo", "ListThree", "ListFour" };
-            ViewBag.numberOfItems = new List<int> { 16, 32, 70, 43 };
-            ViewBag.length = ViewBag.listName.Count;
-            return View("EditList");
+            context.GroceryViewModel.Remove(model);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Open(int id)
