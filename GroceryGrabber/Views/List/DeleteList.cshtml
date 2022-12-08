@@ -6,17 +6,7 @@
 <div>
     <h2 class="text-center">Select a list to Delete</h2>
     <form asp-action="Delete" method="post">
-        <table class="table table-bordered">
-            <tbody>
-                @foreach (var item in ViewBag.GroceriesList)
-                {
-                    <tr>
-                        <td><input type="checkbox" asp-for="GroceryID"/></td>
-                        <td>@item.GroceryName</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <input type="hidden" asp-for="GroceryID" />
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
 
