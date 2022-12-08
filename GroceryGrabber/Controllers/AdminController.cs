@@ -1,14 +1,17 @@
 ﻿using GroceryGrabber.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GroceryGrabber.Controllers
 {
     public class AdminController : Controller
     {
+        private readonly UserManager<UserModel> userManager;
         private GroceryContext context { get; set; }
-        public AdminController(GroceryContext ctx)
+        public AdminController(GroceryContext ctx, UserManager<UserModel> userMgr)
         {
             context = ctx;
+            userManager = userMgr;
         }
 
         [HttpGet]
@@ -62,9 +65,12 @@ namespace GroceryGrabber.Controllers
 
         public IActionResult Admin()
         {
-            ViewBag.AdminID = "";
+            var userid = userManager.GetUserId(HttpContext.User);
+            var user = userManager.FindByIdAsync(userid).Result;
+            ViewBag.AdminID = user.Id;
                 var groceries = context.GroceryItems.OrderBy(x => x.Name).ToList();
                 return View(groceries);
+                
         }
     }
 }
