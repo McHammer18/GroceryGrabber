@@ -34,14 +34,12 @@ namespace GroceryGrabber.Controllers
             return View("EditList");
         }
 
-        public IActionResult Open()
+        public IActionResult Open(int id)
         {
             //This is grabbing the person's list
-            var itm = context.GroceryList
-                .Include(gl => gl.User)
-                .Include(gl => gl.Item)
-                .ToList();
-            return View("~/Views/List/ViewGroceryList.cshtml", itm);
+            ViewBag.listId = id;
+            ViewBag.itm = context.GroceryViewModel.OrderBy(x => x.GroceryName).ToList();
+            return View("ViewGroceryList");
         }
 
         // OR Attribute that catches /create/ and rename method to CreateList
