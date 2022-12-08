@@ -10,20 +10,18 @@
             <tr>
                 <th scope="col">List</th>
                 <th scope="col">Name</th>
-                <th scope="col">Number of items</th>
+                <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             @*Loop that will take DB items and put them in a table, when db is ready you can inject that data*@
-            @foreach(var item in Model)
+            @foreach(var item in ViewBag.GroceriesList)
             {
                 <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Description</td>
-                    <td>@item.Location</td>
-                    <td>@item.Department</td>
-                    <td>@item.Price</td>
+                    <td>@item.UserID</td>
+                    <td>@item.GroceryName</td>
+                    <td><a class="btn btn-success" asp-controller="list" asp-action="Open">Open</a></td>
                 </tr>
             }
         </tbody>

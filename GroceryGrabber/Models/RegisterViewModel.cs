@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GroceryGrabber.Models
 {
@@ -10,13 +12,9 @@ namespace GroceryGrabber.Models
 
 		[Required(ErrorMessage = "Please enter a first name.")]
 		[StringLength(25)]
-		public string Firstname { get; set; }
+		public string Name { get; set; }
 
-		[Required(ErrorMessage = "Please enter a last name.")]
-		[StringLength(25)]
-		public string Lastname { get; set; }
-
-		[Required(ErrorMessage = "Please enter an email address.")]
+        [Required(ErrorMessage = "Please enter an email address.")]
 		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
 
