@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroceryGrabber.Migrations
 {
     [DbContext(typeof(GroceryContext))]
-    [Migration("20221208013519_Initial")]
+    [Migration("20221208032713_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

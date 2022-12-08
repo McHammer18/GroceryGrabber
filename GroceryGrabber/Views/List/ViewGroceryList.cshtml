@@ -1,11 +1,31 @@
-﻿@{
-}
+﻿@model List<GroceryViewModel>
 
 <h1>View Lists</h1>
-<ul>
-    @*Loop will output the grocery items from a list*@
-    @for (int i = 0; i < ViewBag.length; i++)
-    {
-        <li></li>
-    }
-</ul>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Grocery ID</th>
+            <th scope="col">Item 1</th>
+            <th scope="col">Item 2</th>
+            <th scope="col">Item 3</th>
+            <th scope="col">Item 4</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*Loop that will take DB items and put them in a table, when db is ready you can inject that data*@
+        @foreach (var item in Model)
+        {
+            if (ViewBag.ID == item.GroceryID)
+            {
+                <tr>
+                    <td>@item.GroceryID</td>
+                    <td>@item.item1</td>
+                    <td>@item.item2</td>
+                    <td>@item.item3</td>
+                    <td>@item.item4</td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>

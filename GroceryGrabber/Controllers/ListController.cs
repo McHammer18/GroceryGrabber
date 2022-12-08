@@ -37,9 +37,8 @@ namespace GroceryGrabber.Controllers
         public IActionResult Open()
         {
             //This is grabbing the person's list
-            var itm = context.GroceryList
-                .Include(gl => gl.User)
-                .Include(gl => gl.Item)
+            var listid = 
+            var itm = context.GroceryViewModel
                 .ToList();
             return View("~/Views/List/ViewGroceryList.cshtml", itm);
         }
