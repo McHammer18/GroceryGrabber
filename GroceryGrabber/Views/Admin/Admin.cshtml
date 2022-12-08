@@ -2,37 +2,49 @@
 @{
 }
 <h1>Admin</h1>
+
 <div>
-    <h1>Grocery List</h1>
-    <a class="btn btn-primary mb-2" asp-controller="Admin" asp-action="AddGroceryItem">Add New Item</a>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Item Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Location</th>
-                <th scope="col">Department</th>
-                <th scope="col">Price</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    @if (ViewBag.AdminID == "admin")
+    {
+        <h1 class="text-danger">@ViewBag.Error</h1>
+        <h1>Grocery List</h1>
+        <a class="btn btn-primary mb-2" asp-controller="Admin" asp-action="AddGroceryItem">Add New Item</a>
+
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>@item.GroceryId</td>
-                    <td>@item.Name</td>
-                    <td>@item.Description</td>
-                    <td>@item.Location</td>
-                    <td>@item.Department</td>
-                    <td>@item.Price</td>
-                    <td>
-                    <a class="btn btn-danger" asp-controller="Admin" asp-action="EditGroceryItem" asp-route-id="@item.GroceryId">Edit</a>
-                     <a id="delete" class="btn btn-danger" asp-controller="Admin" asp-action="DeleteGroceryItem" asp-route-id="@item.GroceryId">Delete</a>
-                    </td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.GroceryId</td>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@item.Location</td>
+                        <td>@item.Department</td>
+                        <td>@item.Price</td>
+                        <td>
+                            <a class="btn btn-danger" asp-controller="Admin" asp-action="EditGroceryItem" asp-route-id="@item.GroceryId">Edit</a>
+                            <a id="delete" class="btn btn-danger" asp-controller="Admin" asp-action="DeleteGroceryItem" asp-route-id="@item.GroceryId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div>
+            <h1 class="text-danger">You do not have permissions to view this page</h1>
+        </div>
+    }
 </div>

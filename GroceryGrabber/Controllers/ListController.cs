@@ -49,7 +49,6 @@ namespace GroceryGrabber.Controllers
         public IActionResult Create()
         {
             ViewBag.item = context.GroceryItems.ToList();
-            // create new model object to return to view
             var list = new GroceryViewModel();
             var userid = userManager.GetUserId(HttpContext.User);
             var user = userManager.FindByIdAsync(userid).Result;
