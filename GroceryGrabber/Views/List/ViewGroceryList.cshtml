@@ -13,12 +13,11 @@
     </thead>
     <tbody>
         @*Loop that will take DB items and put them in a table, when db is ready you can inject that data*@
-        @foreach (var item in Model)
+        @foreach (var item in ViewBag.itm)
         {
-            if (ViewBag.ID == item.GroceryID)
+            if (ViewBag.listId == item.GroceryID)
             {
                 <tr>
-                    <td>@item.GroceryID</td>
                     <td>@item.item1</td>
                     <td>@item.item2</td>
                     <td>@item.item3</td>
@@ -29,3 +28,4 @@
         }
     </tbody>
 </table>
+<a id="home" class="btn btn-primary" asp-controller="Home" asp-action="Index">Home</a>

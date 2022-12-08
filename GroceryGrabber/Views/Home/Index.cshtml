@@ -22,7 +22,7 @@
                     <tr>
                         <td>@item.UserID</td>
                         <td>@item.GroceryName</td>
-                        <td><a class="btn btn-success" asp-controller="list" asp-action="Open">Open</a></td>
+                        <td><a class="btn btn-success" asp-route-id="@item.GroceryID" asp-controller="list" asp-action="Open">Open</a></td>
                     </tr>
                 }
             }
