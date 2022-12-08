@@ -62,8 +62,9 @@ namespace GroceryGrabber.Controllers
 
         public IActionResult Admin()
         {
-            var groceries = context.GroceryItems.OrderBy(x => x.Name).ToList();
-            return View(groceries);
+            ViewBag.AdminID = "";
+                var groceries = context.GroceryItems.OrderBy(x => x.Name).ToList();
+                return View(groceries);
         }
     }
 }
