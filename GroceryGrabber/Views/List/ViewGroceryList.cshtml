@@ -4,30 +4,30 @@
 </style>
 
 <h1>View Lists</h1>
-        @*Loop that will take DB items and put them in a table, when db is ready you can inject that data*@
-        @foreach (var item in ViewBag.itm)
-        {
-            if (ViewBag.listId == item.GroceryID)
-            {
-                <h3>@item.GroceryName</h3>
-                <li>
-                    <li>@(item.item1 != null ? item.item1 : "")</li>
-                    <li>@(item.item2 != null ? item.item2 : "")</li>
-                    <li>@(item.item3 != null ? item.item3 : "")</li>
-                    <li>@(item.item4 != null ? item.item4 : "")</li>
-                    <li>@(item.item5 != null ? item.item5 : "")</li>
-                    <li>@(item.item6 != null ? item.item6 : "")</li>
-                    <li>@(item.item7 != null ? item.item7 : "")</li>
-                    <li>@(item.item8 != null ? item.item8 : "")</li>
-                    <li>@(item.item9 != null ? item.item9 : "")</li>
-                    <li>@(item.item10 != null ? item.item10 : "")</li>
-                    <li>@(item.item11 != null ? item.item11 : "")</li>
-                    <li>@(item.item12 != null ? item.item12 : "")</li>
-                    <li>@(item.item13 != null ? item.item13 : "")</li>
-                    <li>@(item.item14 != null ? item.item14 : "")</li>
-                    <li>@(item.item15 != null ? item.item15 : "")</li>
-                </li>
-            }
+@*Loop that will take DB items and put them in a table, when db is ready you can inject that data*@
+@foreach (var item in ViewBag.itm)
+{
+    if (ViewBag.listId == item.GroceryID)
+    {
+        <h3>@item.GroceryName</h3>
+        <ul>
+            <li>@(item.item1 != null ? item.item1 : "")</li>
+            <li>@(item.item2 != null ? item.item2 : "")</li>
+            <li>@(item.item3 != null ? item.item3 : "")</li>
+            <li>@(item.item4 != null ? item.item4 : "")</li>
+            <li>@(item.item5 != null ? item.item5 : "")</li>
+            <li>@(item.item6 != null ? item.item6 : "")</li>
+            <li>@(item.item7 != null ? item.item7 : "")</li>
+            <li>@(item.item8 != null ? item.item8 : "")</li>
+            <li>@(item.item9 != null ? item.item9 : "")</li>
+            <li>@(item.item10 != null ? item.item10 : "")</li>
+            <li>@(item.item11 != null ? item.item11 : "")</li>
+            <li>@(item.item12 != null ? item.item12 : "")</li>
+            <li>@(item.item13 != null ? item.item13 : "")</li>
+            <li>@(item.item14 != null ? item.item14 : "")</li>
+            <li>@(item.item15 != null ? item.item15 : "")</li>
+        </ul>
+    }
 
-        }
+}
 <a id="home" class="btn btn-primary" asp-controller="Home" asp-action="Index">Home</a>
