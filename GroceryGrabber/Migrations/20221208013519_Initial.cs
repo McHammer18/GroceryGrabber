@@ -72,6 +72,7 @@ namespace GroceryGrabber.Migrations
                 {
                     GroceryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GroceryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     item1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     item2 = table.Column<string>(type: "nvarchar(max)", nullable: false),

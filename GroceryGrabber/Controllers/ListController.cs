@@ -1,4 +1,5 @@
 ﻿using GroceryGrabber.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,9 +8,11 @@ namespace GroceryGrabber.Controllers
     public class ListController : Controller
     {
         private GroceryContext context { get; set; }
-        public ListController(GroceryContext ctx)
+        private readonly UserManager<UserModel> userManager;
+        public ListController(GroceryContext ctx, UserManager<UserModel> userMgr)
         {
             context = ctx;
+            userManager = userMgr;
         }
         public IActionResult Delete()
         {
@@ -48,13 +51,15 @@ namespace GroceryGrabber.Controllers
             ViewBag.item = context.GroceryItems.ToList();
             // create new model object to return to view
             var list = new GroceryViewModel();
+            var userid = userManager.GetUserId(HttpContext.User);
+            var user = userManager.FindByIdAsync(userid).Result;
+            ViewBag.ID = user.Id;
             return View("CreateList", list);
         }
 
         [HttpPost]
-        public IActionResult Create(GroceryViewModel list)
+        public async Task<IActionResult> Create(GroceryViewModel list)
         {
-            // save the new list to the database
             context.GroceryViewModel.Add(list);
             context.SaveChanges();
             return RedirectToAction("Index", "Home");

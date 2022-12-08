@@ -7,6 +7,7 @@ namespace GroceryGrabber.Models
     {
         [Key]
         public int GroceryID { get; set; }
+        public string UserID { get; set; }
         public string GroceryName { get; set; }
         public string item1 { get; set; }
         public string item2 { get; set; }

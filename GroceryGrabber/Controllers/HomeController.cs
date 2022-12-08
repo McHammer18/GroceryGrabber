@@ -4,8 +4,7 @@ using System.Diagnostics;
 
 namespace GroceryGrabber.Controllers
 {
-
-
+    
     public class HomeController : Controller
     {
         private GroceryContext context { get; set; }
@@ -16,8 +15,8 @@ namespace GroceryGrabber.Controllers
 
         public IActionResult Index()
         {
-            var groceries = context.GroceryItems.OrderBy(x => x.Name).ToList();
-            return View(groceries);
+            ViewBag.GroceriesList = context.GroceryViewModel.OrderBy(x => x.GroceryName).ToList();
+            return View();
         }
     }
 }

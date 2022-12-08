@@ -113,6 +113,10 @@ namespace GroceryGrabber.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("item1")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

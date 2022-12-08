@@ -8,7 +8,6 @@
             <label for="ListName">List Name</label>
             <input type="text" class="form-control" id="ListName" placeholder="Enter List Name" asp-for="GroceryName">
         </div>
-        @* select list to select grocery items from Viewbag.items to bind to List controller *@
         <label for="GroceryId">Grocery Item</label>
         <select class="form-control" id="GroceryId" asp-for="item1">
             <option value="">Select One</option>
@@ -42,7 +41,9 @@
             }
         </select>
 
-        <button asp-controller="List" asp-action="Create" type="submit" class="btn btn-primary">Create</button>
+        <input type="hidden" asp-for="UserID" value="@ViewBag.ID"/>
+
+        <button asp-controller="List" asp-action="Create" asp-route-id="" type="submit" class="btn btn-primary">Create</button>
     </form>
 </div>
 

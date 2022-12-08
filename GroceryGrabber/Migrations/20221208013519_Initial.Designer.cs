@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroceryGrabber.Migrations
 {
     [DbContext(typeof(GroceryContext))]
-    [Migration("20221207223139_Initial")]
+    [Migration("20221208013519_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,6 +112,10 @@ namespace GroceryGrabber.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroceryID"), 1L, 1);
 
                     b.Property<string>("GroceryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
