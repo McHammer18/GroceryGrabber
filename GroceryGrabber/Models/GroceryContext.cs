@@ -13,7 +13,7 @@ namespace GroceryGrabber.Models
         public DbSet<UserModel> Users { get; set; }
         public DbSet<GroceryItem> GroceryItems { get; set; }
         public DbSet<UsersLists> GroceryList { get; set; }
-        public DbSet<GroceryViewModel> groceryViewModels { get; set; }
+        public DbSet<GroceryViewModel> GroceryViewModel { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {

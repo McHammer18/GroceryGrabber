@@ -109,6 +109,14 @@ namespace GroceryGrabber.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroceryID"), 1L, 1);
 
+                    b.Property<string>("GroceryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("item1")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -121,9 +129,13 @@ namespace GroceryGrabber.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("item4")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("GroceryID");
 
-                    b.ToTable("groceryViewModels");
+                    b.ToTable("GroceryViewModel");
                 });
 
             modelBuilder.Entity("GroceryGrabber.Models.UsersLists", b =>

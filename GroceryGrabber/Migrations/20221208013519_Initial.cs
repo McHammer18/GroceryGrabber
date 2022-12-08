@@ -67,18 +67,21 @@ namespace GroceryGrabber.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "groceryViewModels",
+                name: "GroceryViewModel",
                 columns: table => new
                 {
                     GroceryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GroceryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     item1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     item2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    item3 = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    item3 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    item4 = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_groceryViewModels", x => x.GroceryID);
+                    table.PrimaryKey("PK_GroceryViewModel", x => x.GroceryID);
                 });
 
             migrationBuilder.CreateTable(
@@ -295,7 +298,7 @@ namespace GroceryGrabber.Migrations
                 name: "GroceryList");
 
             migrationBuilder.DropTable(
-                name: "groceryViewModels");
+                name: "GroceryViewModel");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
