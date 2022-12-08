@@ -1,7 +1,6 @@
 ﻿using GroceryGrabber.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace GroceryGrabber.Controllers
 {
@@ -20,9 +19,22 @@ namespace GroceryGrabber.Controllers
         {
             var userid = userManager.GetUserId(HttpContext.User);
             var user = userManager.FindByIdAsync(userid).Result;
-            ViewBag.ID = user.Id;
-            ViewBag.GroceriesList = context.GroceryViewModel.OrderBy(x => x.GroceryName).ToList();
-            return View();
+
+            if (ModelState.IsValid)
+            {
+                if (userid != null)
+                {
+                    ViewBag.ID = user.Id;
+                    ViewBag.GroceriesList = context.GroceryViewModel.OrderBy(x => x.GroceryName).ToList();
+                    return View();
+                } else
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+            } else
+            {
+                return RedirectToAction("Login", "Acccount");
+            }
         }
     }
 }
