@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryGrabber", "GroceryGrabber.csproj", "{5FC43185-545F-40BB-9971-997E46951011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryGrabber", "GroceryGrabber.csproj", "{5FC43185-545F-40BB-9971-997E46951011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grocery Test", "..\Grocery Test\Grocery Test.csproj", "{86C18D34-6E33-43E0-991C-E7C112B9CB10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5FC43185-545F-40BB-9971-997E46951011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FC43185-545F-40BB-9971-997E46951011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FC43185-545F-40BB-9971-997E46951011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86C18D34-6E33-43E0-991C-E7C112B9CB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86C18D34-6E33-43E0-991C-E7C112B9CB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86C18D34-6E33-43E0-991C-E7C112B9CB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86C18D34-6E33-43E0-991C-E7C112B9CB10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
