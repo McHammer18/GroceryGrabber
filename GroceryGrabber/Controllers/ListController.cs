@@ -45,15 +45,29 @@ namespace GroceryGrabber.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var itm = context.GroceryItems.ToList();
-            return View("CreateList", itm);
+            ViewBag.item = context.GroceryItems.ToList();
+            return View("CreateList", new GroceryViewModel());
         }
 
         [HttpPost]
-        public IActionResult Create(UsersLists lists)
+        public IActionResult Create(GroceryViewModel list)
         {
-            //Logic for saving the new list to the database
-            return View();
+            if (ModelState.IsValid)
+            {
+                //var groceryList = new GroceryViewModel
+                //{
+                //    item1 = list.item1,
+                //    item2 = list.item2,
+                //    item3 = list.item3,
+                //};
+                context.groceryViewModels.Add(list);
+                context.SaveChanges();
+                return RedirectToAction("Open");
+            }
+            else
+            {
+                return View("EditList");
+            }
         }
 
     }

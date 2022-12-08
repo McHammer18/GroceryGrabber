@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroceryGrabber.Migrations
 {
     [DbContext(typeof(GroceryContext))]
-    [Migration("20221207025041_InitailAdmin")]
-    partial class InitailAdmin
+    [Migration("20221207173717_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -103,6 +103,31 @@ namespace GroceryGrabber.Migrations
                         });
                 });
 
+            modelBuilder.Entity("GroceryGrabber.Models.GroceryViewModel", b =>
+                {
+                    b.Property<int>("GroceryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroceryID"), 1L, 1);
+
+                    b.Property<string>("item1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("item2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("item3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GroceryID");
+
+                    b.ToTable("groceryViewModels");
+                });
+
             modelBuilder.Entity("GroceryGrabber.Models.UsersLists", b =>
                 {
                     b.Property<int>("id")
@@ -110,6 +135,9 @@ namespace GroceryGrabber.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("GroceryID")
+                        .HasColumnType("int");
 
                     b.Property<int?>("ItemGroceryId")
                         .HasColumnType("int");
