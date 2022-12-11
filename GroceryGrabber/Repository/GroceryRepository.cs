@@ -41,5 +41,10 @@ namespace GroceryGrabber.Repository
         {
             context.GroceryItems.Update(groceryItem);
         }
+
+        //public GroceryItem OrderGroceryItems()
+        //{
+        //    return context.GroceryItems.OrderBy(x => x.Name).ToList();
+       // }
     }
 }

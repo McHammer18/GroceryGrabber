@@ -2,10 +2,11 @@
 
 namespace GroceryGrabber.Repository
 {
-    public class IGroceryRepository
+    public interface IGroceryRepository
     {
         List<GroceryItem> GetAllItems();
         GroceryItem Find(int id);
+        //GroceryItem OrderGroceryItems();
         void Save();
         void InsertGroceryItem(GroceryItem groceryItem);
         void DeleteGroceryItem(GroceryItem groceryItem);
