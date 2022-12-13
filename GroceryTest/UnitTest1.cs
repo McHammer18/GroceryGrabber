@@ -50,7 +50,7 @@ namespace GroceryTest
             ListController ctrl = new ListController(ctx , mgr.Object );
             
             //action
-            var result = ctrl.Open();
+            var result = ctrl.OpenList();
 
             
             //Assert

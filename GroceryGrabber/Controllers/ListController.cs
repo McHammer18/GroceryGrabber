@@ -29,7 +29,7 @@ namespace GroceryGrabber.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-        public IActionResult Open()
+        public IActionResult OpenList()
         {
             //This is grabbing the person's list
             var itm = context.GroceryList
