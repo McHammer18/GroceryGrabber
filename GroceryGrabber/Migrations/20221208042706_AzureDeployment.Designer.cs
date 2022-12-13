@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroceryGrabber.Migrations
 {
     [DbContext(typeof(GroceryContext))]
-    [Migration("20221208013519_Initial")]
-    partial class Initial
+    [Migration("20221208042706_AzureDeployment")]
+    partial class AzureDeployment
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

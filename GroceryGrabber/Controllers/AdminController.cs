@@ -1,14 +1,18 @@
 ﻿using GroceryGrabber.Models;
+using GroceryGrabber.Repository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GroceryGrabber.Controllers
 {
     public class AdminController : Controller
     {
-        private GroceryContext context { get; set; }
-        public AdminController(GroceryContext ctx)
+        private readonly UserManager<UserModel> userManager;
+        private IGroceryRepository groceryRepository;
+        public AdminController(IGroceryRepository repo, UserManager<UserModel> userMgr)
         {
-            context = ctx;
+            groceryRepository = repo;
+            userManager = userMgr;
         }
 
         [HttpGet]
@@ -21,7 +25,7 @@ namespace GroceryGrabber.Controllers
         public IActionResult EditGroceryItem(int id)
         {
             ViewBag.Action = "Edit Item";
-            var groceryItem = context.GroceryItems.Find(id);
+            var groceryItem = groceryRepository.Find(id);
             return View("EditGroceryItem", groceryItem);
         }
         public IActionResult EditGroceryItem(GroceryItem groceryItem)
@@ -30,13 +34,13 @@ namespace GroceryGrabber.Controllers
             {
                 if(groceryItem.GroceryId == 0)
                 {
-                    context.GroceryItems.Add(groceryItem);
+                    groceryRepository.InsertGroceryItem(groceryItem);
                 }
                 else
                 {
-                    context.GroceryItems.Update(groceryItem);
+                    groceryRepository.UpdateGroceryItem(groceryItem);
                 }
-                context.SaveChanges();
+                groceryRepository.Save();
                 return RedirectToAction("Admin");
             }
             else
@@ -48,22 +52,25 @@ namespace GroceryGrabber.Controllers
 
         public IActionResult DeleteGroceryItem(int id)
         {
-            var groceryItem = context.GroceryItems.Find(id);
+            var groceryItem = groceryRepository.Find(id);
             return View(groceryItem);
         }
 
         [HttpPost]
         public IActionResult DeleteGroceryItem(GroceryItem groceryItem)
         {
-            context.GroceryItems.Remove(groceryItem);
-            context.SaveChanges();
+            groceryRepository.DeleteGroceryItem(groceryItem);
             return RedirectToAction("Admin", "Admin");
         }
 
         public IActionResult Admin()
         {
-            var groceries = context.GroceryItems.OrderBy(x => x.Name).ToList();
-            return View(groceries);
+            var userid = userManager.GetUserId(HttpContext.User);
+            var user = userManager.FindByIdAsync(userid).Result;
+            ViewBag.AdminID = user.Id;
+            var groceries = groceryRepository.GetAllItems();
+                return View(groceries);
+                
         }
     }
 }

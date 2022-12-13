@@ -8,6 +8,10 @@ html {
   }
 }
 
+li {
+    list-style: none;
+}
+
 html {
   position: relative;
   min-height: 100%;

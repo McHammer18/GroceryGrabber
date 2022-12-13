@@ -66,15 +66,6 @@ namespace GroceryGrabber.Models
                     Location = "Aisle 20"
                 }
              );
-
-            //modelBuilder.Entity<UsersLists>().HasData(
-               // new UsersLists
-               // {
-               //     id = 1,
-              //      UserID = 1,
-               //     GroceryId = 1
-             //   });
-
         }
 
 
