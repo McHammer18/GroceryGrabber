@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using GroceryGrabber.Models;
 using Microsoft.AspNetCore.Identity;
+using GroceryGrabber.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<GroceryContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("GroceryContext")));
 
+builder.Services.AddScoped<IGroceryRepository, GroceryRepository>();
 
 builder.Services.AddIdentity<UserModel, IdentityRole>(options =>
 {

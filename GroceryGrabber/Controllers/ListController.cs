@@ -29,6 +29,15 @@ namespace GroceryGrabber.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+        public IActionResult OpenList()
+        {
+            //This is grabbing the person's list
+            var itm = context.GroceryList
+                 .Include(gl => gl.User)
+                 .Include(gl => gl.Item)
+                 .ToList();
+            return View("~/Views/List/ViewGroceryList.cshtml", itm);
+        }
 
         public IActionResult Open(int id)
         {
